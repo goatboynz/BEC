@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<?xml-stylesheet href="reports.xsl" type="text/xsl" ?>
+<BecStatus>
+	<hostname>Nuxil&apos;s testserver</hostname>
+	<gamever>1.10.114700</gamever>
+	<mapname></mapname>
+	<mission></mission>
+	<difficulty>0</difficulty>
+	<numplayers>0/12</numplayers>
+	<lastupdate>05:35:36 - 2014/02/10</lastupdate>
+	<nextupdate>05:36:36 - 2014/02/10</nextupdate>
+	<becversion>1.596</becversion>
+	<beversion>1.184</beversion>
+	<becuptime>0:19:00</becuptime>
+	<becreporter>1</becreporter>
+	<serveruptime>1:32:01</serveruptime>
+	<kts>0</kts>
+	<bts>0</bts>
+	<hts>0</hts>
+	<cts>0</cts>
+	<uts>0</uts>
+	<numadmins>0</numadmins>
+	<numtmpadmins>0</numtmpadmins>
+	<gametype></gametype>
+	<gamemode>openwaiting</gamemode>
+	<gameState>1</gameState>
+	<mod>Arma 3</mod>
+	<password>0</password>
+	<equalModRequired>0</equalModRequired>
+	<verifySignatures>0</verifySignatures>
+	<requiredVersion>110</requiredVersion>
+	<reqSecureId>1</reqSecureId>
+	<players>
+	</players>
+</BecStatus>

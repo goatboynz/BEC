@@ -1,0 +1,346 @@
+﻿<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+
+<!-- 
+This file is only provided as an example file and is not practical to use in real life.
+Make sure you take a copy of this file rename it and keep the orginale intact for orginale refrance.
+And Start using your new file Now!!
+
+Web Doc : http://www.ibattle.org/install-and-configure/setting-up-the-scheduler/
+
+BE Commands supported by the scheduler system are:
+
+say -1 some text
+loadbans
+loadscripts
+loadevents
+writebans
+maxping 250
+#shutdown
+#restart
+#reassign
+#lock
+#unlock
+#mission filename (without the .pbo extension)
+
+
+*****************************************************************************************************
+Description:
+*****************************************************************************************************
+
+Schedules are createad by adding a job with id.
+The first schedule should always start with id="0"
+
+<Scheduler>
+	<job id="0">
+		<time></time>
+		<delay></delay>
+		<day></day>
+		<loop></loop>
+		<cmd></cmd>
+		<cmdtype></cmdtype>
+	</job>
+	<job id="1">
+		<time></time>
+		<delay></delay>
+		<day></day>
+		<loop></loop>
+		<cmd></cmd>
+		<cmdtype></cmdtype>
+	</job>
+</Scheduler>	
+
+The job tag has 6 sub tags.
+starting with:
+
+
+<time>......</time> 
+This tag may have one of tow input format.
+
+Format 1:
+Contains 3 segments where each segment is a size of 2 in range of 00 - 99
+Hour Min  Sec
+[nn] [nn] [nn]
+nnnnnn
+Max value is 999999
+
+<time>000090</time>
+This will make the schedule execute 90 secounds after bec has started up.
+Note that:
+
+<time>000130</time>
+Will also make the schedule execute 90 secounds after bec has started up.
+as 90 sec is the same as 1 min and 30 sec
+
+ 
+Format 2:
+Contains 2 segments where each segment is a size of 2 in range of 00 - (23&59) and each segment is seperated by ':'
+
+Hour   Min    Sec
+[nn] : [nn] : [nn]
+
+<time>23:05:30</time>
+This will make the schedule execute precice at 23:05:30
+
+To execute a schedule at midnight use:
+<time>00:00:00</time>
+
+To execute a schedule at noon use:
+<time>12:00:00</time>
+
+
+<delay>....../delay>
+This tag uses the same format as the <time> tag format 1, it also only work when the <time> tag format is 1!
+<delay>nnnnnn</delay>
+
+
+<day>.../day>
+
+The day of the week the schedule should run on.
+Days are seperated by ',' 
+<day>n</day> or <day>n,n+</day>
+
+Monday starts with 1!
+
+All days
+<day>1,2,3,4,5,6,7</day>
+
+Monday and Friday only.
+<day>1,5</day>
+
+
+Set if the command is to loop or not..
+<loop>1</loop> 
+
+Set the command that is to be executed.
+<cmd>loadscripts</cmd>
+
+Set 0 if its a internal command and 1 if its a external *.bat or *.cmd script.
+<cmdtype>0</cmdtype>
+
+-->
+
+
+<Scheduler>
+
+	<!-- Schedular to be shown all days in the week. -->
+	<!-- show text ingame every 20 min -->
+	<job id="0">
+		<time>000005</time>
+		<delay>000000</delay>
+		<day>1,2,3,4,5,6,7</day>
+		<loop>1</loop> 
+		<cmd>say -1 This is a annoying message sent every 5th seconds to the server from Bec</cmd>	
+		<cmdtype>0</cmdtype>
+	</job>
+	
+	<!-- show text ingame every 60 min -->
+	<job id="1">
+		<time>006000</time>
+		<delay>000000</delay>
+		<day>1,2,3,4,5,6,7</day>
+		<loop>1</loop> 
+		<cmd>say -1 This server restarts 4 times per day, 06:00, 12:00, 1800 and 00:00</cmd>
+		<cmdtype>0</cmdtype>			
+	</job>
+	
+	
+	<!-- *** RESTARTS *** -->
+	<!-- 5 min to the 06:00 restart -->
+	<job id="2">
+		<time>05:55:00</time>
+		<delay>000000</delay>
+		<day>1,2,3,4,5,6,7</day>
+		<loop>0</loop> 
+		<cmd>say -1 This server will restart in 5 min.</cmd>
+		<cmdtype>0</cmdtype>			
+	</job>
+	<!-- 06:00 restart -->
+	<job id="3">
+		<time>06:00:00</time>
+		<delay>000000</delay>
+		<day>1,2,3,4,5,6,7</day>
+		<loop>0</loop> 
+		<cmd>#shutdown</cmd>
+		<cmdtype>0</cmdtype>			
+	</job>
+	
+	<!-- 5 min to the 12:00 restart -->
+	<job id="4">
+		<time>11:55:00</time>
+		<delay>000000</delay>
+		<day>1,2,3,4,5,6,7</day>
+		<loop>0</loop> 
+		<cmd>say -1 This server will restart in 5 min.</cmd>
+		<cmdtype>0</cmdtype>			
+	</job>
+	<!-- 12:00:00 restart -->
+	<job id="5">
+		<time>12:00:00</time>
+		<delay>000000</delay>
+		<day>1,2,3,4,5,6,7</day>
+		<loop>0</loop> 
+		<cmd>#shutdown</cmd>
+		<cmdtype>0</cmdtype>			
+	</job>
+	
+	<!-- 5 min to the 18:00 restart -->
+	<job id="6">
+		<time>17:55:00</time>
+		<delay>000000</delay>
+		<day>1,2,3,4,5,6,7</day>
+		<loop>0</loop> 
+		<cmd>say -1 This server will restart in 5 min.</cmd>
+		<cmdtype>0</cmdtype>			
+	</job>
+	<!-- 18:00:00 restart -->
+	<job id="7">
+		<time>18:00:00</time>
+		<delay>000000</delay>
+		<day>1,2,3,4,5,6,7</day>
+		<loop>0</loop> 
+		<cmd>#shutdown</cmd>
+		<cmdtype>0</cmdtype>			
+	</job>	
+	
+	<!-- 5 min to the 00:00 restart -->
+	<job id="8">
+		<time>23:55:00</time>
+		<delay>000000</delay>
+		<day>1,2,3,4,5,6,7</day>
+		<loop>0</loop> 
+		<cmd>say -1 This server will restart in 5 min. i'll only show you this message once!.</cmd>
+		<cmdtype>0</cmdtype>			
+	</job>
+	<!-- 00:00:00 restart -->
+	<job id="9">
+		<time>00:00:00</time>
+		<delay>000000</delay>
+		<day>1,2,3,4,5,6,7</day>
+		<loop>0</loop> 
+		<cmd>#shutdown</cmd>
+		<cmdtype>0</cmdtype>			
+	</job>	
+	
+	<!-- Monday Only -->
+	<job id="10">
+		<time>009000</time>
+		<delay>000000</delay>
+		<day>1</day>
+		<loop>1</loop> 
+		<cmd>say -1 Monday Consists of pvp games. i'll annoy you with this message evry 90 min</cmd>
+		<cmdtype>0</cmdtype>			
+	</job>
+	<job id="11">
+		<time>009000</time>
+		<delay>000005</delay>
+		<day>1</day>
+		<loop>1</loop> 
+		<cmd>say -1 Bring your friends for some good and fun PVP fights.</cmd>
+		<cmdtype>0</cmdtype>			
+	</job>	
+	
+	<!-- Tuesday Only -->
+	<job id="12">
+		<time>009000</time>
+		<delay>000000</delay>
+		<day>2</day>
+		<loop>1</loop> 
+		<cmd>say -1 Tuesday consists of CTI games.</cmd>
+		<cmdtype>0</cmdtype>			
+	</job>
+	<job id="13">
+		<time>009000</time>
+		<delay>000010</delay>
+		<day>2</day>
+		<loop>1</loop> 
+		<cmd>say -1 Bring your friends for a good and fun CTI Game.</cmd>
+		<cmdtype>0</cmdtype>			
+	</job>	
+	
+	<!-- Wednesday Only -->
+	<job id="14">
+		<time>009000</time>
+		<delay>000000</delay>
+		<day>3</day>
+		<loop>1</loop> 
+		<cmd>say -1 Wednesday is our Realisme day. If your like realisme stay and have fun</cmd>
+		<cmdtype>0</cmdtype>			
+	</job>
+	<job id="15">
+		<time>009000</time>
+		<delay>000010</delay>
+		<day>3</day>
+		<loop>1</loop> 
+		<cmd>say -1 If your have friends who like realisme. Bring them with you.</cmd>
+		<cmdtype>0</cmdtype>			
+	</job>
+	<job id="16">
+		<time>009000</time>
+		<delay>000020</delay>
+		<day>3</day>
+		<loop>1</loop> 
+		<cmd>say -1 Every friday we host some events. check our homepage for this week event.</cmd>
+		<cmdtype>0</cmdtype>			
+	</job>
+
+	<!-- Thursday Only -->
+	<job id="17">
+		<time>009000</time>
+		<delay>000000</delay>
+		<day>4</day>
+		<loop>1</loop> 
+		<cmd>say -1 Thursday is a Chill day. Remember to join our event tomorrow evening.</cmd>
+		<cmdtype>0</cmdtype>			
+	</job>
+	
+	<!-- Friday Only -->
+	<job id="18">
+		<time>009000</time>
+		<delay>000000</delay>
+		<day>5</day>
+		<loop>1</loop> 
+		<cmd>say -1 Today is our event day. Have fun and bring frineds. Remember we host events every friday</cmd>
+		<cmdtype>0</cmdtype>			
+	</job>
+	
+	<!-- Saturday Only -->
+	<job id="19">
+		<time>009000</time>
+		<delay>000000</delay>
+		<day>6</day>
+		<loop>1</loop> 
+		<cmd>say -1 Saturday is, Drink some beer and play ArmA day.</cmd>
+		<cmdtype>0</cmdtype>			
+	</job>	
+	
+	<!-- Sunday Only -->
+	<job id="20">
+		<time>009000</time>
+		<delay>000000</delay>
+		<day>7</day>
+		<loop>1</loop> 
+		<cmd>say -1 Sunday is our chill night. Play some ArmA to recover from your last night beer drinking.</cmd>
+		<cmdtype>0</cmdtype>			
+	</job>	
+	
+	<!-- the external scripts must be .bat or .cmd files -->
+	<job id="21">
+		<time>001030</time>
+		<delay>000010</delay>
+		<day>1,2,3,4,5,6,7</day>
+		<loop>1</loop> 
+		<cmd>C:\Tools\Server_LogRotate.bat</cmd>	
+		<cmdtype>1</cmdtype>			
+	</job>
+	<job id="22">
+		<time>23:00:00</time>
+		<delay>000000</delay>
+		<day>1,2,3,4,5,6,7</day>
+		<loop>1</loop> 
+		<cmd>C:\Tools\Server_Modscheck.bat</cmd>	
+		<cmdtype>1</cmdtype>			
+	</job>
+	
+</Scheduler>
+
+
